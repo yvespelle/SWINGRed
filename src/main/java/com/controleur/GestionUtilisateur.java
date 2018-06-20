@@ -37,7 +37,7 @@ public class GestionUtilisateur {
         }
     }
 
-    public ArrayList consulterUtilisateurs() {
+    public ArrayList<Identifiants> consulterUtilisateurs() {
         ArrayList<Identifiants> listeUser= new ArrayList<>();
         Query q = em.createQuery(UtilisateurConstantes.REQUEST_SELECT_TOUS_UTILISATEURS);
         listeUser.addAll(q.getResultList());
@@ -74,6 +74,13 @@ public class GestionUtilisateur {
         i.setMdp(id.getMdp());
         em.persist(i);
     }
-    
+    public String miseEnFormeTextArea (ArrayList<Identifiants> list){
+        String str="";
+        str="Liste des utilisateurs :\n";
+        for (Identifiants i: list){
+            str=str+"Login : "+i.getLogin()+"\nMot de passe : "+i.getMdp()+"\n\n";
+        }
+        return str;
+    }
     
 }

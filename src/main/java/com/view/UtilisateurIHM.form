@@ -9,12 +9,12 @@
             <Property name="text" type="java.lang.String" value="Menu"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="rechrcherUnUtilisateur">
+            <MenuItem class="javax.swing.JMenuItem" name="rechercherUnUtilisateur">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Rechercher un utilisateur"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rechrcherUnUtilisateurActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rechercherUnUtilisateurActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="afficherTousLesUtilisateurs">
@@ -101,7 +101,7 @@
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="labelLogin" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="textFieldLogin1" min="-2" pref="105" max="-2" attributes="0"/>
+                          <Component id="textFieldLogin" min="-2" pref="105" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
@@ -136,7 +136,7 @@
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="labelLogin" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="textFieldLogin1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="textFieldLogin" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -162,7 +162,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="resultAreaTousLesUtilisateurs">
+            <Component class="javax.swing.JTextArea" name="resultArea">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
@@ -189,12 +189,12 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldMdpActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="textFieldLogin1">
+        <Component class="javax.swing.JTextField" name="textFieldLogin">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldLogin1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="textFieldLoginActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelMdp">

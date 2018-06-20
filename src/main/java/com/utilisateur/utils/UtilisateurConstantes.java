@@ -15,6 +15,14 @@ public class UtilisateurConstantes {
     public static final String REQUEST_SELECT_UTILISATEUR_LOGIN = "SELECT i FROM Identifiants i WHERE e.login=:idUtil";
     public static final String REQUEST_DELETE_UTILISATEUR = "DELETE FROM Identifiants i WHERE e.id=:idUtil";
     
+    //MODE/TEXTE DU BOUTON
+    
+    public static final String OKBUTTON_RECHERCHER_1 = "Rechercher";
+    public static final String OKBUTTON_MODIFIER = "Modifier";
+    public static final String OKBUTTON_SUPPRIMER= "Supprimer";
+    public static final String OKBUTTON_AJOUTER= "Ajouter";
+    
+    
     
     
     

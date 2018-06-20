@@ -5,6 +5,11 @@
  */
 package com.view;
 
+import com.controleur.GestionUtilisateur;
+import com.modele.Identifiants;
+
+import com.utilisateur.utils.UtilisateurConstantes;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +18,8 @@ import javax.swing.JOptionPane;
  */
 public class UtilisateurIHM extends javax.swing.JFrame {
 
+    ArrayList<Identifiants> listeIdentifiants= new ArrayList<>();
+    GestionUtilisateur gu= new GestionUtilisateur();
     /**
      * Creates new form UtilisateurIHM
      */
@@ -31,17 +38,17 @@ public class UtilisateurIHM extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        resultAreaTousLesUtilisateurs = new javax.swing.JTextArea();
+        resultArea = new javax.swing.JTextArea();
         Utilisateurs = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         textFieldMdp = new javax.swing.JTextField();
-        textFieldLogin1 = new javax.swing.JTextField();
+        textFieldLogin = new javax.swing.JTextField();
         labelMdp = new javax.swing.JLabel();
         labelLogin = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        rechrcherUnUtilisateur = new javax.swing.JMenuItem();
+        rechercherUnUtilisateur = new javax.swing.JMenuItem();
         afficherTousLesUtilisateurs = new javax.swing.JMenuItem();
         ajouter = new javax.swing.JMenuItem();
         supprimer = new javax.swing.JMenuItem();
@@ -49,10 +56,10 @@ public class UtilisateurIHM extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        resultAreaTousLesUtilisateurs.setEditable(false);
-        resultAreaTousLesUtilisateurs.setColumns(20);
-        resultAreaTousLesUtilisateurs.setRows(5);
-        jScrollPane1.setViewportView(resultAreaTousLesUtilisateurs);
+        resultArea.setEditable(false);
+        resultArea.setColumns(20);
+        resultArea.setRows(5);
+        jScrollPane1.setViewportView(resultArea);
 
         Utilisateurs.setText("Résultats :");
 
@@ -65,10 +72,10 @@ public class UtilisateurIHM extends javax.swing.JFrame {
             }
         });
 
-        textFieldLogin1.setEditable(false);
-        textFieldLogin1.addActionListener(new java.awt.event.ActionListener() {
+        textFieldLogin.setEditable(false);
+        textFieldLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textFieldLogin1ActionPerformed(evt);
+                textFieldLoginActionPerformed(evt);
             }
         });
 
@@ -94,7 +101,7 @@ public class UtilisateurIHM extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addComponent(labelLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textFieldLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(textFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(labelMdp)
@@ -122,7 +129,7 @@ public class UtilisateurIHM extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(labelLogin)
-                                .addComponent(textFieldLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(textFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(52, 52, 52)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(textFieldMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,13 +142,13 @@ public class UtilisateurIHM extends javax.swing.JFrame {
 
         jMenu1.setText("Menu");
 
-        rechrcherUnUtilisateur.setText("Rechercher un utilisateur");
-        rechrcherUnUtilisateur.addActionListener(new java.awt.event.ActionListener() {
+        rechercherUnUtilisateur.setText("Rechercher un utilisateur");
+        rechercherUnUtilisateur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rechrcherUnUtilisateurActionPerformed(evt);
+                rechercherUnUtilisateurActionPerformed(evt);
             }
         });
-        jMenu1.add(rechrcherUnUtilisateur);
+        jMenu1.add(rechercherUnUtilisateur);
 
         afficherTousLesUtilisateurs.setText("Afficher tous les utilisateurs");
         afficherTousLesUtilisateurs.addActionListener(new java.awt.event.ActionListener() {
@@ -195,18 +202,23 @@ public class UtilisateurIHM extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rechrcherUnUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechrcherUnUtilisateurActionPerformed
-       // JOptionPane jopRechercher = new JOptionPane();
-      //  String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à rechercher : ", "Rechercher un utilisateur", JOptionPane.QUESTION_MESSAGE);
-        
-                //Change le texte du bouton en mode Recherche un employé et l'enable
-                //Enable l'edit du text field login
-    }//GEN-LAST:event_rechrcherUnUtilisateurActionPerformed
+    private void rechercherUnUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercherUnUtilisateurActionPerformed
+        // JOptionPane jopRechercher = new JOptionPane();
+        //  String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à rechercher : ", "Rechercher un utilisateur", JOptionPane.QUESTION_MESSAGE);
+        okButton.setText(UtilisateurConstantes.OKBUTTON_RECHERCHER_1);
+        okButton.setEnabled(rootPaneCheckingEnabled);
+        textFieldLogin.setEditable(rootPaneCheckingEnabled);
+        //Change le texte du bouton en mode Recherche un employé et l'enable
+        //Enable l'edit du text field login
+    }//GEN-LAST:event_rechercherUnUtilisateurActionPerformed
 
     private void modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierActionPerformed
 //        JOptionPane jopRechercher = new JOptionPane();
 //        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à modifier : ", "Modifier un utilisateur", JOptionPane.QUESTION_MESSAGE);
-        
+        okButton.setText(UtilisateurConstantes.OKBUTTON_MODIFIER);
+        okButton.setEnabled(rootPaneCheckingEnabled);
+        textFieldLogin.setEditable(rootPaneCheckingEnabled);
+        textFieldMdp.setEditable(rootPaneCheckingEnabled);
 //Change le texte du bouton en mode Modifier et l'enable
         //Enable l'edit des 2 text fields
     }//GEN-LAST:event_modifierActionPerformed
@@ -214,48 +226,56 @@ public class UtilisateurIHM extends javax.swing.JFrame {
     private void supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerActionPerformed
 //        JOptionPane jopRechercher = new JOptionPane();
 //        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à supprimer : ", "Supprimer un utilisateur", JOptionPane.QUESTION_MESSAGE);
-
+        okButton.setText(UtilisateurConstantes.OKBUTTON_SUPPRIMER);
+        okButton.setEnabled(rootPaneCheckingEnabled);
+        textFieldLogin.setEditable(rootPaneCheckingEnabled);
         //Change le texte du bouton en mode Supprimer et l'enable
         //Enable l'edit du text field login
     }//GEN-LAST:event_supprimerActionPerformed
 
     private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
-
-       //Enable l'edit des 2 text fields
-       //Enable le bouton et change son texte pour Ajouter
+        okButton.setText(UtilisateurConstantes.OKBUTTON_AJOUTER);
+        okButton.setEnabled(rootPaneCheckingEnabled);
+        textFieldLogin.setEditable(rootPaneCheckingEnabled);
+        textFieldMdp.setEditable(rootPaneCheckingEnabled);
+        //Enable l'edit des 2 text fields
+        //Enable le bouton et change son texte pour Ajouter
     }//GEN-LAST:event_ajouterActionPerformed
 
     private void afficherTousLesUtilisateursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficherTousLesUtilisateursActionPerformed
         //Afficher tous les user dans le text area
-        
-        
+//APPEL D'une méthode dans gestion uti et affichage dans text area
+listeIdentifiants=gu.consulterUtilisateurs();
+String str=gu.miseEnFormeTextArea(listeIdentifiants);
+resultArea.setText(str);
+
     }//GEN-LAST:event_afficherTousLesUtilisateursActionPerformed
 
     private void textFieldMdpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldMdpActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldMdpActionPerformed
 
-    private void textFieldLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldLogin1ActionPerformed
+    private void textFieldLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textFieldLogin1ActionPerformed
+    }//GEN-LAST:event_textFieldLoginActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         switch (okButton.getText()) {
-            case "Rechercher un utilisateur":
-           //Appeler Recherche d'un employé et affichage dans text area
+            case UtilisateurConstantes.OKBUTTON_RECHERCHER_1:
+                //Appeler Recherche d'un employé et affichage dans text area
                 //
-            break;
-            case "Modifier":
-           //On change avec les nouvelles valeurs rentrées
-            break;
-            case "Supprimer": 
-              //On supprime l'user rentré dans login
-            break;
-            case "Ajouter":
-                //Ajouter un Utilisateur avec le login et le mdp rentré
+                break;
+            case UtilisateurConstantes.OKBUTTON_MODIFIER:
+                //On change avec les nouvelles valeurs rentrées
+                break;
+            case UtilisateurConstantes.OKBUTTON_SUPPRIMER:
+                //On supprime l'user rentré dans login
+                break;
+            case UtilisateurConstantes.OKBUTTON_AJOUTER:
+            //Ajouter un Utilisateur avec le login et le mdp rentré
             default:
-            okButton.setText("Youpi");
-            break;
+                okButton.setText("Youpi");
+                break;
         }
     }//GEN-LAST:event_okButtonActionPerformed
 
@@ -307,10 +327,10 @@ public class UtilisateurIHM extends javax.swing.JFrame {
     private javax.swing.JLabel labelMdp;
     private javax.swing.JMenuItem modifier;
     private javax.swing.JButton okButton;
-    private javax.swing.JMenuItem rechrcherUnUtilisateur;
-    private javax.swing.JTextArea resultAreaTousLesUtilisateurs;
+    private javax.swing.JMenuItem rechercherUnUtilisateur;
+    private javax.swing.JTextArea resultArea;
     private javax.swing.JMenuItem supprimer;
-    private javax.swing.JTextField textFieldLogin1;
+    private javax.swing.JTextField textFieldLogin;
     private javax.swing.JTextField textFieldMdp;
     // End of variables declaration//GEN-END:variables
 }
