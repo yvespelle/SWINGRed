@@ -24,19 +24,19 @@ public class  GestionUtilisateur {
     EntityManager em = emf.createEntityManager();
  
 
-    public void persist(Object object) {
-
-        em.getTransaction().begin();
-        try {
-            em.persist(object);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            em.getTransaction().rollback();
-        } finally {
+//    public void persist(Object object) {
+//
+//        em.getTransaction().begin();
+//        try {
+//            em.persist(object);
+//            em.getTransaction().commit();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            em.getTransaction().rollback();
+//        } finally {
 //            em.close();
-        }
-    }
+//        }
+//    }
 
     public ArrayList<Identifiants> consulterUtilisateurs() {
         ArrayList<Identifiants> listeUser= new ArrayList<>();

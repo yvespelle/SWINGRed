@@ -5,7 +5,6 @@
  */
 package com.view;
 
-
 import com.controleur.GestionUtilisateur;
 import com.modele.Identifiants;
 
@@ -19,8 +18,10 @@ import javax.swing.JOptionPane;
  */
 public class UtilisateurIHM extends javax.swing.JFrame {
 
-    ArrayList<Identifiants> listeIdentifiants= new ArrayList<>();
-GestionUtilisateur gu;
+    ArrayList<Identifiants> listeIdentifiants = new ArrayList<>();
+    GestionUtilisateur gu = new GestionUtilisateur();
+    Identifiants identifiant;
+
     /**
      * Creates new form UtilisateurIHM
      */
@@ -204,8 +205,9 @@ GestionUtilisateur gu;
     }// </editor-fold>//GEN-END:initComponents
 
     private void rechercherUnUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechercherUnUtilisateurActionPerformed
-        // JOptionPane jopRechercher = new JOptionPane();
-        //  String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à rechercher : ", "Rechercher un utilisateur", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane jopRechercher = new JOptionPane();
+        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à rechercher : ", "Rechercher un utilisateur", JOptionPane.QUESTION_MESSAGE);
+        textFieldLogin.setText(nomUtilisateur);
         okButton.setText(UtilisateurConstantes.OKBUTTON_RECHERCHER_1);
         okButton.setEnabled(rootPaneCheckingEnabled);
         textFieldLogin.setEditable(rootPaneCheckingEnabled);
@@ -214,8 +216,11 @@ GestionUtilisateur gu;
     }//GEN-LAST:event_rechercherUnUtilisateurActionPerformed
 
     private void modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierActionPerformed
-//        JOptionPane jopRechercher = new JOptionPane();
-//        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à modifier : ", "Modifier un utilisateur", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane jopRechercher = new JOptionPane();
+        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à modifier : ", "Modifier un utilisateur", JOptionPane.QUESTION_MESSAGE);
+        //ON RECHERCHE D'ABORD S'IL EXISTE UN UTILISATEUR CORRESPONDANT A LA DEMANDE
+        
+        textFieldLogin.setText(nomUtilisateur);
         okButton.setText(UtilisateurConstantes.OKBUTTON_MODIFIER);
         okButton.setEnabled(rootPaneCheckingEnabled);
         textFieldLogin.setEditable(rootPaneCheckingEnabled);
@@ -247,9 +252,10 @@ GestionUtilisateur gu;
         //Afficher tous les user dans le text area
 //APPEL D'une méthode dans gestion uti et affichage dans text area
 
-listeIdentifiants=gu.consulterUtilisateurs();
-String str=gu.miseEnFormeTextArea(listeIdentifiants);
-resultArea.setText(str);
+        listeIdentifiants = gu.consulterUtilisateurs();
+        System.out.println(listeIdentifiants.get(0).getLogin());
+        String str = gu.miseEnFormeTextArea(listeIdentifiants);
+        resultArea.setText(str);
 
     }//GEN-LAST:event_afficherTousLesUtilisateursActionPerformed
 
@@ -265,7 +271,13 @@ resultArea.setText(str);
         switch (okButton.getText()) {
             case UtilisateurConstantes.OKBUTTON_RECHERCHER_1:
                 //Appeler Recherche d'un employé et affichage dans text area
-                //
+                listeIdentifiants.clear();
+                identifiant=gu.consulterUtilisateurParLogin(textFieldLogin.getText());
+       
+                listeIdentifiants.add(identifiant);
+ 
+                String str=gu.miseEnFormeTextArea(listeIdentifiants);
+                resultArea.setText(str);
                 break;
             case UtilisateurConstantes.OKBUTTON_MODIFIER:
                 //On change avec les nouvelles valeurs rentrées
