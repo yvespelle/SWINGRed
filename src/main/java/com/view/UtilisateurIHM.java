@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 public class UtilisateurIHM extends javax.swing.JFrame {
 
     ArrayList<Identifiants> listeIdentifiants= new ArrayList<>();
-GestionUtilisateur gu = new GestionUtilisateur();
+GestionUtilisateur gu;
     /**
      * Creates new form UtilisateurIHM
      */
