@@ -57,5 +57,12 @@ public class GestionUtilisateur {
         return q.executeUpdate();
     }
 
+    public void ajouterUtilisateur(Identifiants id){
+        Identifiants i = new Identifiants();
+        i.setLogin(id.getLogin());
+        i.setMdp(id.getMdp());
+        em.persist(i);        
+    }
+    
     
 }

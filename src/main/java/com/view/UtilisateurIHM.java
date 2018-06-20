@@ -48,8 +48,6 @@ public class UtilisateurIHM extends javax.swing.JFrame {
 
         Modifier.setText("Modifier");
 
-        NomUtilisateur.setText("jTextField2");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
