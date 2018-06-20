@@ -18,10 +18,11 @@ import javax.persistence.Query;
  *
  * @author stage011
  */
-public class GestionUtilisateur {
+public class  GestionUtilisateur {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("solutec-lyon_SWINGRed_jar_1.0-SNAPSHOTPU");
     EntityManager em = emf.createEntityManager();
+ 
 
     public void persist(Object object) {
 
@@ -74,7 +75,8 @@ public class GestionUtilisateur {
         i.setMdp(id.getMdp());
         em.persist(i);
     }
-    public String miseEnFormeTextArea (ArrayList<Identifiants> list){
+    
+     public String miseEnFormeTextArea (ArrayList<Identifiants> list){
         String str="";
         str="Liste des utilisateurs :\n";
         for (Identifiants i: list){
@@ -82,5 +84,4 @@ public class GestionUtilisateur {
         }
         return str;
     }
-    
 }

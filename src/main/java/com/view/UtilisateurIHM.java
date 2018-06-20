@@ -5,6 +5,7 @@
  */
 package com.view;
 
+
 import com.controleur.GestionUtilisateur;
 import com.modele.Identifiants;
 
@@ -19,7 +20,7 @@ import javax.swing.JOptionPane;
 public class UtilisateurIHM extends javax.swing.JFrame {
 
     ArrayList<Identifiants> listeIdentifiants= new ArrayList<>();
-    GestionUtilisateur gu= new GestionUtilisateur();
+GestionUtilisateur gu = new GestionUtilisateur();
     /**
      * Creates new form UtilisateurIHM
      */
@@ -245,6 +246,7 @@ public class UtilisateurIHM extends javax.swing.JFrame {
     private void afficherTousLesUtilisateursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficherTousLesUtilisateursActionPerformed
         //Afficher tous les user dans le text area
 //APPEL D'une méthode dans gestion uti et affichage dans text area
+
 listeIdentifiants=gu.consulterUtilisateurs();
 String str=gu.miseEnFormeTextArea(listeIdentifiants);
 resultArea.setText(str);
