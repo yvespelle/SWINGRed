@@ -7,6 +7,7 @@ package com.controleur;
 
 import com.modele.Identifiants;
 import com.utilisateur.utils.UtilisateurConstantes;
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -36,13 +37,15 @@ public class GestionUtilisateur {
         }
     }
 
-    public Collection consulterUtilisateurs() {
+    public ArrayList consulterUtilisateurs() {
+        ArrayList<Identifiants> listeUser= new ArrayList<>();
         Query q = em.createQuery(UtilisateurConstantes.REQUEST_SELECT_TOUS_UTILISATEURS);
-        return q.getResultList();
+        listeUser.addAll(q.getResultList());
+        return listeUser ;
     }
     
     
-    public Collection consulterUtilisateurParId(int idUtil) {
+    public Collection consulterUtilisateurParLogin(String ) {
         Query q = em.createQuery(UtilisateurConstantes.REQUEST_SELECT_UTILISATEUR_ID);
         q.setParameter("idUtil", idUtil);
         return q.getResultList();
