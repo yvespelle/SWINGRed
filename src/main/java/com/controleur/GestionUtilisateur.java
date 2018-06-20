@@ -6,6 +6,7 @@
 package com.controleur;
 
 import com.modele.Identifiants;
+import com.utilisateur.utils.UtilisateurConstantes;
 import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -35,9 +36,15 @@ public class GestionUtilisateur {
         }
     }
 
-    public Collection consulterUtilisateur(int idEmp) {
-        Query q = em.createQuery("SELECT i FROM Identifiants i WHERE e.id=:idEmp");
-        q.setParameter("idEmp", idEmp);
+    public Collection consulterUtilisateurs() {
+        Query q = em.createQuery(UtilisateurConstantes.REQUEST_SELECT_TOUS_UTILISATEURS);
+        return q.getResultList();
+    }
+    
+    
+    public Collection consulterUtilisateurParId(int idUtil) {
+        Query q = em.createQuery(UtilisateurConstantes.REQUEST_SELECT_UTILISATEUR_ID);
+        q.setParameter("idUtil", idUtil);
         return q.getResultList();
     }
 
@@ -51,9 +58,9 @@ public class GestionUtilisateur {
 
     }
 
-    public int supprimerUtilisateur(int idEmp) {
-        Query q = em.createQuery("DELETE FROM Identifiants i WHERE e.id=:idEmp");
-        q.setParameter("idEmp", idEmp);
+    public int supprimerUtilisateur(int idUtil) {
+        Query q = em.createQuery(UtilisateurConstantes.REQUEST_DELETE_UTILISATEURS);
+        q.setParameter("idUtil", idUtil);
         return q.executeUpdate();
     }
 
@@ -61,7 +68,7 @@ public class GestionUtilisateur {
         Identifiants i = new Identifiants();
         i.setLogin(id.getLogin());
         i.setMdp(id.getMdp());
-        em.persist(i);        
+        em.persist(i);
     }
     
     
