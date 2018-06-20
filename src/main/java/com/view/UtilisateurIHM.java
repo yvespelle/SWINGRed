@@ -5,6 +5,8 @@
  */
 package com.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author stage011
@@ -27,69 +29,116 @@ public class UtilisateurIHM extends javax.swing.JFrame {
     private void initComponents() {//GEN-BEGIN:initComponents
 
         jPanel1 = new javax.swing.JPanel();
-        Consulter = new javax.swing.JButton();
-        Ajouter = new javax.swing.JButton();
-        Supprimer = new javax.swing.JButton();
-        Modifier = new javax.swing.JButton();
-        NomUtilisateur = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        resultAreaTousLesUtilisateurs = new javax.swing.JTextArea();
+        Utilisateurs = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        resultAreaUnUtilisateur = new javax.swing.JTextArea();
+        jSeparator1 = new javax.swing.JSeparator();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        rechrcherUnUtilisateur = new javax.swing.JMenuItem();
+        afficherTousLesUtilisateurs = new javax.swing.JMenuItem();
+        ajouter = new javax.swing.JMenuItem();
+        supprimer = new javax.swing.JMenuItem();
+        modifier = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Consulter.setText("Consulter");
-        Consulter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConsulterActionPerformed(evt);
-            }
-        });
+        resultAreaTousLesUtilisateurs.setColumns(20);
+        resultAreaTousLesUtilisateurs.setRows(5);
+        jScrollPane1.setViewportView(resultAreaTousLesUtilisateurs);
 
-        Ajouter.setText("Ajouter ");
+        Utilisateurs.setText("Affichage des utilisateurs :");
 
-        Supprimer.setText("Supprimer");
+        jLabel1.setText("Affichage d'un utilisateur :");
 
-        Modifier.setText("Modifier");
+        resultAreaUnUtilisateur.setColumns(20);
+        resultAreaUnUtilisateur.setRows(5);
+        jScrollPane2.setViewportView(resultAreaUnUtilisateur);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(NomUtilisateur)
-                    .addComponent(jScrollPane1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(Consulter, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Modifier, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10)
-                .addComponent(Ajouter, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Supprimer, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Utilisateurs)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(NomUtilisateur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Ajouter)
-                        .addComponent(Supprimer))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Consulter)
-                        .addComponent(Modifier)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Utilisateurs)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
+
+        jMenu1.setText("Menu");
+
+        rechrcherUnUtilisateur.setText("Rechercher un utilisateur");
+        rechrcherUnUtilisateur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rechrcherUnUtilisateurActionPerformed(evt);
+            }
+        });
+        jMenu1.add(rechrcherUnUtilisateur);
+
+        afficherTousLesUtilisateurs.setText("Afficher tous les utilisateurs");
+        afficherTousLesUtilisateurs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                afficherTousLesUtilisateursActionPerformed(evt);
+            }
+        });
+        jMenu1.add(afficherTousLesUtilisateurs);
+
+        ajouter.setText("Ajouter");
+        ajouter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ajouterActionPerformed(evt);
+            }
+        });
+        jMenu1.add(ajouter);
+
+        supprimer.setText("Supprimer");
+        supprimer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supprimerActionPerformed(evt);
+            }
+        });
+        jMenu1.add(supprimer);
+
+        modifier.setText("Modifier");
+        modifier.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifierActionPerformed(evt);
+            }
+        });
+        jMenu1.add(modifier);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,9 +154,30 @@ public class UtilisateurIHM extends javax.swing.JFrame {
         pack();
     }//GEN-END:initComponents
 
-    private void ConsulterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConsulterActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ConsulterActionPerformed
+    private void rechrcherUnUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechrcherUnUtilisateurActionPerformed
+        JOptionPane jopRechercher = new JOptionPane();
+        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à rechercher : ", "Rechercher un utilisateur", JOptionPane.QUESTION_MESSAGE);
+    }//GEN-LAST:event_rechrcherUnUtilisateurActionPerformed
+
+    private void modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierActionPerformed
+        JOptionPane jopRechercher = new JOptionPane();
+        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à modifier : ", "Modifier un utilisateur", JOptionPane.QUESTION_MESSAGE);
+    }//GEN-LAST:event_modifierActionPerformed
+
+    private void supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerActionPerformed
+        JOptionPane jopRechercher = new JOptionPane();
+        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à supprimer : ", "Supprimer un utilisateur", JOptionPane.QUESTION_MESSAGE);
+    }//GEN-LAST:event_supprimerActionPerformed
+
+    private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
+       
+    }//GEN-LAST:event_ajouterActionPerformed
+
+    private void afficherTousLesUtilisateursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficherTousLesUtilisateursActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_afficherTousLesUtilisateursActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,13 +215,20 @@ public class UtilisateurIHM extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Ajouter;
-    private javax.swing.JButton Consulter;
-    private javax.swing.JButton Modifier;
-    private javax.swing.JTextField NomUtilisateur;
-    private javax.swing.JButton Supprimer;
+    private javax.swing.JLabel Utilisateurs;
+    private javax.swing.JMenuItem afficherTousLesUtilisateurs;
+    private javax.swing.JMenuItem ajouter;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JMenuItem modifier;
+    private javax.swing.JMenuItem rechrcherUnUtilisateur;
+    private javax.swing.JTextArea resultAreaTousLesUtilisateurs;
+    private javax.swing.JTextArea resultAreaUnUtilisateur;
+    private javax.swing.JMenuItem supprimer;
     // End of variables declaration//GEN-END:variables
 }
