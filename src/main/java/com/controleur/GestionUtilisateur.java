@@ -59,7 +59,7 @@ public class GestionUtilisateur {
     }
 
     public int supprimerUtilisateur(int idUtil) {
-        Query q = em.createQuery(UtilisateurConstantes.REQUEST_DELETE_UTILISATEURS);
+        Query q = em.createQuery(UtilisateurConstantes.REQUEST_DELETE_UTILISATEUR);
         q.setParameter("idUtil", idUtil);
         return q.executeUpdate();
     }
