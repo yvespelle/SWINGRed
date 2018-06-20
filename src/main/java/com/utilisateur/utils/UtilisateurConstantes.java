@@ -12,7 +12,7 @@ package com.utilisateur.utils;
 public class UtilisateurConstantes {
         
     public static final String REQUEST_SELECT_TOUS_UTILISATEURS = "SELECT i FROM Identifiants i";
-    public static final String REQUEST_SELECT_UTILISATEUR_ID = "SELECT i FROM Identifiants i WHERE e.id=:idUtil";
+    public static final String REQUEST_SELECT_UTILISATEUR_LOGIN = "SELECT i FROM Identifiants i WHERE e.login=:idUtil";
     public static final String REQUEST_DELETE_UTILISATEUR = "DELETE FROM Identifiants i WHERE e.id=:idUtil";
     
     

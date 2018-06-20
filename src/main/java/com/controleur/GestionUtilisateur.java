@@ -45,10 +45,11 @@ public class GestionUtilisateur {
     }
     
     
-    public Collection consulterUtilisateurParLogin(String ) {
-        Query q = em.createQuery(UtilisateurConstantes.REQUEST_SELECT_UTILISATEUR_ID);
-        q.setParameter("idUtil", idUtil);
-        return q.getResultList();
+    public Identifiants consulterUtilisateurParLogin(String login) {
+   
+        Query q = em.createQuery(UtilisateurConstantes.REQUEST_SELECT_UTILISATEUR_LOGIN);
+        q.setParameter("idUtil", login);
+        return (Identifiants) q.getSingleResult();
     }
 
     public void modifierUtilisateur(Identifiants i) {

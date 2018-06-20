@@ -38,6 +38,7 @@ public class UtilisateurIHM extends javax.swing.JFrame {
         textFieldLogin1 = new javax.swing.JTextField();
         labelMdp = new javax.swing.JLabel();
         labelLogin = new javax.swing.JLabel();
+        okButton = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         rechrcherUnUtilisateur = new javax.swing.JMenuItem();
@@ -75,6 +76,14 @@ public class UtilisateurIHM extends javax.swing.JFrame {
 
         labelLogin.setText("Login");
 
+        okButton.setText("OK");
+        okButton.setEnabled(false);
+        okButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -86,14 +95,16 @@ public class UtilisateurIHM extends javax.swing.JFrame {
                         .addComponent(labelLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(textFieldLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(labelMdp)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                        .addComponent(textFieldMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(47, 47, 47)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(okButton)
+                            .addComponent(textFieldMdp, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(34, 34, 34)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Utilisateurs)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -103,23 +114,23 @@ public class UtilisateurIHM extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
+                .addComponent(Utilisateurs, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Utilisateurs, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(38, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelLogin)
-                    .addComponent(textFieldLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textFieldMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelMdp))
-                .addGap(159, 159, 159))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(labelLogin)
+                                .addComponent(textFieldLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(52, 52, 52)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(textFieldMdp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelMdp))
+                            .addGap(65, 65, 65)
+                            .addComponent(okButton))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jMenu1.setText("Menu");
@@ -174,41 +185,48 @@ public class UtilisateurIHM extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 27, Short.MAX_VALUE))
+                .addGap(0, 5, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 5, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void rechrcherUnUtilisateurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rechrcherUnUtilisateurActionPerformed
-        JOptionPane jopRechercher = new JOptionPane();
-        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à rechercher : ", "Rechercher un utilisateur", JOptionPane.QUESTION_MESSAGE);
+       // JOptionPane jopRechercher = new JOptionPane();
+      //  String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à rechercher : ", "Rechercher un utilisateur", JOptionPane.QUESTION_MESSAGE);
         
-                
+                //Change le texte du bouton en mode Recherche un employé et l'enable
+                //Enable l'edit du text field login
     }//GEN-LAST:event_rechrcherUnUtilisateurActionPerformed
 
     private void modifierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifierActionPerformed
-        JOptionPane jopRechercher = new JOptionPane();
-        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à modifier : ", "Modifier un utilisateur", JOptionPane.QUESTION_MESSAGE);
+//        JOptionPane jopRechercher = new JOptionPane();
+//        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à modifier : ", "Modifier un utilisateur", JOptionPane.QUESTION_MESSAGE);
+        
+//Change le texte du bouton en mode Modifier et l'enable
+        //Enable l'edit des 2 text fields
     }//GEN-LAST:event_modifierActionPerformed
 
     private void supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerActionPerformed
-        JOptionPane jopRechercher = new JOptionPane();
-        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à supprimer : ", "Supprimer un utilisateur", JOptionPane.QUESTION_MESSAGE);
+//        JOptionPane jopRechercher = new JOptionPane();
+//        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à supprimer : ", "Supprimer un utilisateur", JOptionPane.QUESTION_MESSAGE);
+
+        //Change le texte du bouton en mode Supprimer et l'enable
+        //Enable l'edit du text field login
     }//GEN-LAST:event_supprimerActionPerformed
 
     private void ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ajouterActionPerformed
-       
+
+       //Enable l'edit des 2 text fields
+       //Enable le bouton et change son texte pour Ajouter
     }//GEN-LAST:event_ajouterActionPerformed
 
     private void afficherTousLesUtilisateursActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_afficherTousLesUtilisateursActionPerformed
-        
+        //Afficher tous les user dans le text area
         
         
     }//GEN-LAST:event_afficherTousLesUtilisateursActionPerformed
@@ -220,6 +238,26 @@ public class UtilisateurIHM extends javax.swing.JFrame {
     private void textFieldLogin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldLogin1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textFieldLogin1ActionPerformed
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        switch (okButton.getText()) {
+            case "Rechercher un utilisateur":
+           //Appeler Recherche d'un employé et affichage dans text area
+                //
+            break;
+            case "Modifier":
+           //On change avec les nouvelles valeurs rentrées
+            break;
+            case "Supprimer": 
+              //On supprime l'user rentré dans login
+            break;
+            case "Ajouter":
+                //Ajouter un Utilisateur avec le login et le mdp rentré
+            default:
+            okButton.setText("Youpi");
+            break;
+        }
+    }//GEN-LAST:event_okButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,6 +306,7 @@ public class UtilisateurIHM extends javax.swing.JFrame {
     private javax.swing.JLabel labelLogin;
     private javax.swing.JLabel labelMdp;
     private javax.swing.JMenuItem modifier;
+    private javax.swing.JButton okButton;
     private javax.swing.JMenuItem rechrcherUnUtilisateur;
     private javax.swing.JTextArea resultAreaTousLesUtilisateurs;
     private javax.swing.JMenuItem supprimer;
