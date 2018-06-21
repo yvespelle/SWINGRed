@@ -20,7 +20,7 @@ public class UtilisateurIHM extends javax.swing.JFrame {
 
     ArrayList<Identifiants> listeIdentifiants = new ArrayList<>();
     GestionUtilisateur gu = new GestionUtilisateur();
-    Identifiants identifiant= new Identifiants();
+    Identifiants identifiant = new Identifiants();
     int idAModifier;
 
     /**
@@ -226,7 +226,7 @@ public class UtilisateurIHM extends javax.swing.JFrame {
         listeIdentifiants = gu.consulterUtilisateurParLogin(nomUtilisateur);
         if (listeIdentifiants.isEmpty()) {
             resultArea.setText(UtilisateurConstantes.MESSAGE_NO_USER);
-              textFieldLogin.setText("");
+            textFieldLogin.setText("");
             textFieldMdp.setText("");
         } else {
 
@@ -303,19 +303,32 @@ public class UtilisateurIHM extends javax.swing.JFrame {
                 identifiant.setLogin(textFieldLogin.getText());
                 identifiant.setMdp(textFieldMdp.getText());
                 gu.modifierUtilisateur(identifiant);
-               
-                   listeIdentifiants.clear();
+
+                listeIdentifiants.clear();
                 listeIdentifiants = gu.consulterUtilisateurParLogin(textFieldLogin.getText());
 
-                String strMod ="Nouvelle entrée :\n"+ gu.miseEnFormeTextArea(listeIdentifiants);
+                String strMod = "Nouvelle entrée :\n" + gu.miseEnFormeTextArea(listeIdentifiants);
                 resultArea.setText(strMod);
-                
+
                 break;
             case UtilisateurConstantes.OKBUTTON_SUPPRIMER:
                 //On supprime l'user rentré dans login
                 break;
+                
             case UtilisateurConstantes.OKBUTTON_AJOUTER:
-            //Ajouter un Utilisateur avec le login et le mdp rentré
+                identifiant.setLogin(textFieldLogin.getText());
+                identifiant.setMdp(textFieldMdp.getText());
+                gu.ajouterUtilisateur(identifiant);
+                
+//              Affiche le résultat de l'ajout dans la text area 
+                listeIdentifiants.clear();
+                listeIdentifiants = gu.consulterUtilisateurParLogin(textFieldLogin.getText());
+
+                str = gu.miseEnFormeTextArea(listeIdentifiants);
+                resultArea.setText(str);
+                break;
+
+//            Ajouter un Utilisateur avec le login et le mdp rentré
             default:
                 okButton.setText("Youpi");
                 break;

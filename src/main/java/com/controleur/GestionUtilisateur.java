@@ -73,11 +73,14 @@ public class GestionUtilisateur {
     }
 
     public void ajouterUtilisateur(Identifiants id) {
+        em.getTransaction().begin();
         Identifiants i = new Identifiants();
         i.setLogin(id.getLogin());
         i.setMdp(id.getMdp());
         em.persist(i);
+        em.getTransaction().commit();
     }
+
 
     public String miseEnFormeTextArea(ArrayList<Identifiants> list) {
         String str = "";
