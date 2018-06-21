@@ -37,6 +37,7 @@ public class GestionUtilisateur {
 //            em.close();
         }
     }
+
     public ArrayList<Identifiants> consulterUtilisateurs() {
         listeUser.clear();
         Query q = em.createQuery(UtilisateurConstantes.REQUEST_SELECT_TOUS_UTILISATEURS);
@@ -52,6 +53,7 @@ public class GestionUtilisateur {
         return listeUser;
     }
 
+    
     public void modifierUtilisateur(Identifiants i) {
 
         Identifiants id = (Identifiants) em.find(Identifiants.class, i.getId());
@@ -61,12 +63,13 @@ public class GestionUtilisateur {
         id.setLogin(i.getLogin());
         id.setMdp(i.getMdp());
         System.out.println("après cght");
-         System.out.println(id.getLogin());
+        System.out.println(id.getLogin());
         em.getTransaction().commit();
 
     }
 
     public int supprimerUtilisateur(int idUtil) {
+        em.getTransaction().begin();
         Query q = em.createQuery(UtilisateurConstantes.REQUEST_DELETE_UTILISATEUR);
         q.setParameter("idUtil", idUtil);
         return q.executeUpdate();
@@ -80,7 +83,6 @@ public class GestionUtilisateur {
         em.persist(i);
         em.getTransaction().commit();
     }
-
 
     public String miseEnFormeTextArea(ArrayList<Identifiants> list) {
         String str = "";

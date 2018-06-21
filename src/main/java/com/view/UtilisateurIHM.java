@@ -246,14 +246,12 @@ public class UtilisateurIHM extends javax.swing.JFrame {
     }//GEN-LAST:event_modifierActionPerformed
 
     private void supprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_supprimerActionPerformed
-//        JOptionPane jopRechercher = new JOptionPane();
-//        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à supprimer : ", "Supprimer un utilisateur", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane jopRechercher = new JOptionPane();
+        String nomUtilisateur = jopRechercher.showInputDialog(null, "Rentrez le nom d'utilisateur à supprimer : ", "Supprimer un utilisateur", JOptionPane.QUESTION_MESSAGE);
+        textFieldLogin.setText(nomUtilisateur);
         okButton.setText(UtilisateurConstantes.OKBUTTON_SUPPRIMER);
-        resultArea.setText("");
-        //Activation et désactivation des objets
-        okButton.setEnabled(true);
-        textFieldLogin.setEditable(true);
-        textFieldMdp.setEditable(false);
+        okButton.setEnabled(rootPaneCheckingEnabled);
+        textFieldLogin.setEditable(rootPaneCheckingEnabled);
         //Change le texte du bouton en mode Supprimer et l'enable
         //Enable l'edit du text field login
     }//GEN-LAST:event_supprimerActionPerformed
@@ -295,6 +293,7 @@ public class UtilisateurIHM extends javax.swing.JFrame {
                 String str = gu.miseEnFormeTextArea(listeIdentifiants);
                 resultArea.setText(str);
                 break;
+
             case UtilisateurConstantes.OKBUTTON_MODIFIER:
                 //On change avec les nouvelles valeurs rentrées
                 //CHANGER IDENAMODIFIER POURSAUVEGARDER PLUTOT L'ID DE L'ENTREE A MODIFIER (PEUT ETRE L'AFFICHER ?)
@@ -311,15 +310,29 @@ public class UtilisateurIHM extends javax.swing.JFrame {
                 resultArea.setText(strMod);
 
                 break;
+
             case UtilisateurConstantes.OKBUTTON_SUPPRIMER:
+
                 //On supprime l'user rentré dans login
+                listeIdentifiants.clear();
+                listeIdentifiants = gu.consulterUtilisateurParLogin(textFieldLogin.getText());
+                int id = listeIdentifiants.get(0).getId();
+                int statusSuppr = gu.supprimerUtilisateur(id);
+                resultArea.setText(Integer.toString(statusSuppr));
+                if (statusSuppr > 0) {
+                    resultArea.setText("Suppression réussie");
+
+                } else {
+                    resultArea.setText("Suppression échoué");
+                }
+
                 break;
-                
+
             case UtilisateurConstantes.OKBUTTON_AJOUTER:
                 identifiant.setLogin(textFieldLogin.getText());
                 identifiant.setMdp(textFieldMdp.getText());
                 gu.ajouterUtilisateur(identifiant);
-                
+
 //              Affiche le résultat de l'ajout dans la text area 
                 listeIdentifiants.clear();
                 listeIdentifiants = gu.consulterUtilisateurParLogin(textFieldLogin.getText());
