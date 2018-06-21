@@ -18,48 +18,51 @@ import javax.persistence.Query;
  *
  * @author stage011
  */
-public class  GestionUtilisateur {
+public class GestionUtilisateur {
 
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("solutec-lyon_SWINGRed_jar_1.0-SNAPSHOTPU");
     EntityManager em = emf.createEntityManager();
- 
+    ArrayList<Identifiants> listeUser = new ArrayList<>();
 
-//    public void persist(Object object) {
-//
-//        em.getTransaction().begin();
-//        try {
-//            em.persist(object);
-//            em.getTransaction().commit();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            em.getTransaction().rollback();
-//        } finally {
+    public void persist(Object object) {
+
+        em.getTransaction().begin();
+        try {
+            em.persist(object);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            em.getTransaction().rollback();
+        } finally {
 //            em.close();
-//        }
-//    }
-
+        }
+    }
     public ArrayList<Identifiants> consulterUtilisateurs() {
-        ArrayList<Identifiants> listeUser= new ArrayList<>();
+        listeUser.clear();
         Query q = em.createQuery(UtilisateurConstantes.REQUEST_SELECT_TOUS_UTILISATEURS);
         listeUser.addAll(q.getResultList());
-        return listeUser ;
+        return listeUser;
     }
-    
-    
-    public Identifiants consulterUtilisateurParLogin(String login) {
-   
+
+    public ArrayList<Identifiants> consulterUtilisateurParLogin(String login) {
+        listeUser.clear();
         Query q = em.createQuery(UtilisateurConstantes.REQUEST_SELECT_UTILISATEUR_LOGIN);
         q.setParameter("idUtil", login);
-        return (Identifiants) q.getSingleResult();
+        listeUser.addAll(q.getResultList());
+        return listeUser;
     }
 
     public void modifierUtilisateur(Identifiants i) {
 
         Identifiants id = (Identifiants) em.find(Identifiants.class, i.getId());
-        id.setId(i.getId());
+        em.getTransaction().begin();
+        System.out.println("avant chgt");
+        System.out.println(id.getLogin());
         id.setLogin(i.getLogin());
         id.setMdp(i.getMdp());
-        em.persist(id);
+        System.out.println("après cght");
+         System.out.println(id.getLogin());
+        em.getTransaction().commit();
 
     }
 
@@ -69,18 +72,18 @@ public class  GestionUtilisateur {
         return q.executeUpdate();
     }
 
-    public void ajouterUtilisateur(Identifiants id){
+    public void ajouterUtilisateur(Identifiants id) {
         Identifiants i = new Identifiants();
         i.setLogin(id.getLogin());
         i.setMdp(id.getMdp());
         em.persist(i);
     }
-    
-     public String miseEnFormeTextArea (ArrayList<Identifiants> list){
-        String str="";
-        str="Liste des utilisateurs :\n";
-        for (Identifiants i: list){
-            str=str+"Login : "+i.getLogin()+"\nMot de passe : "+i.getMdp()+"\n\n";
+
+    public String miseEnFormeTextArea(ArrayList<Identifiants> list) {
+        String str = "";
+        str = "Liste des utilisateurs :\n";
+        for (Identifiants i : list) {
+            str = str + "Login : " + i.getLogin() + "\nMot de passe : " + i.getMdp() + "\n\n";
         }
         return str;
     }

@@ -22,6 +22,10 @@ public class UtilisateurConstantes {
     public static final String OKBUTTON_SUPPRIMER= "Supprimer";
     public static final String OKBUTTON_AJOUTER= "Ajouter";
     
+    //MESSAGE :
+    
+    public static final String MESSAGE_NO_USER = "Aucun utilisateur à ce nom.";
+    
     
     
     
