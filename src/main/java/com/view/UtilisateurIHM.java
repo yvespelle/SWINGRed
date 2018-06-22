@@ -315,6 +315,8 @@ public class UtilisateurIHM extends javax.swing.JFrame {
 
                 //On supprime l'user rentré dans login
                 listeIdentifiants.clear();
+                identifiant.setId(idAModifier);
+                
                 listeIdentifiants = gu.consulterUtilisateurParLogin(textFieldLogin.getText());
                 int id = listeIdentifiants.get(0).getId();
                 int statusSuppr = gu.supprimerUtilisateur(id);
